@@ -1,0 +1,45 @@
+/**/
+ons-toolbar .title{
+    color : #93408E;
+    font-size:20pt;
+    text-align:center;
+    background-color:#FFF
+}
+
+ons-toolbar{
+     background-color:#FFF!important
+}
+
+.button {
+     background-color:#93408E
+}
+
+.back-button__icon {
+    fill:#93408E
+}
+
+#welcome-page ons-button, #page-numeros ons-button  {
+    margin-top: 10%;
+    width:50%;
+}
+.annuaireinfos{
+    text-align: center;
+    display:table-cell;
+    vertical-align:middle;
+}
+.content a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.width100{
+    width:100%
+}
+
+.list-header-row {
+    display:flex
+}
+
+.hide {
+    display:none
+}

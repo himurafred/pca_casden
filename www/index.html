@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  
+  
+  
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="assets/jquery-3.2.1.min.js"></script>
+  <script src="assets/login.js"></script>
+  <script src="assets/annuaire.js"></script>
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+       
+  <script>
+      var annuaire = null;
+      var annuaireCC = null;
+      var annuaireCA = null;
+      var user = null;
+      var dialogLogin = null;
+
+      function loadJson(file){
+          $.getJSON("assets/pupa.json", function(data){         
+                 annuaire = data;
+                 annuaireCC = data.pupa.filter(function (el) {
+                    return el.st_pca !== ""
+                });
+               
+                annuaireCA = data.pupa.filter(function (el) {
+                    return el.st_pca === ""
+                });
+          });        
+      }
+     
+      
+    // Page init event
+    document.addEventListener('init', function(event) {
+      var page = event.target;
+        
+     loadJson('assets/pupa.json');
+        
+     ons.ready(function() {
+         if (user == null){ 
+                ons.createDialog('login.html').then(function(login) {
+                        dialogLogin = login;
+                        dialogLogin.show();
+                });
+         }
+      });
+        
+      if (page.matches('#welcome-page')) {
+        
+                page.querySelector('#push-numeros').onclick = function() {
+                        document.querySelector('#navigator').pushPage('page-numeros.html');
+                };
+                page.querySelector('#push-messagerie').onclick = function() {
+                        document.location.href="http://www.google.fr/messagerie";
+                }
+                page.querySelector('#push-safe').onclick = function() {
+
+                    ons.notification.confirm({
+                        message: 'Confirmez que vous êtes en sécurité ?',
+                        callback: function(answer) {
+                            if ( answer ){
+                                $.post( "https://www.google.fr/test.php", user )
+                               .fail(function() {
+                                       ons.notification.toast({message: 'Enregistrement non effectué', timeout: 2000})
+                                })
+                                .done(function( data ) {
+                                   ons.notification.toast({message: 'Enregistrement effectué', timeout: 2000})
+                              });
+                             }
+                        }
+                    });
+                } 
+                page.querySelector('#push-gopca').onclick = function() {
+                        document.location.href="http://www.google.fr/pca";
+                }
+                 page.querySelector('#push-kit').onclick = function() {
+                        document.querySelector('#navigator').pushPage('page-kit.html');
+                }
+       
+      } else if (page.matches('#page-numeros')) {
+                page.querySelector('#push-numeros-cc').onclick = function() {
+                        document.querySelector('#navigator').pushPage('page-numeros-cc.html');
+                }
+                page.querySelector('#push-numeros-ca').onclick = function() {
+                        document.querySelector('#navigator').pushPage('page-numeros-ca.html');
+                }
+      } else if (page.matches('#page-numeros-cc')) {
+               displayAnnuaire(annuaireCC, 'CC');
+      } else if (page.matches('#page-numeros-ca')) {
+               displayAnnuaire(annuaireCA, 'CA');
+      }
+    });
+  </script>
+  
+</head>
+<body>
+  <ons-navigator id="navigator" page="welcome.html"></ons-navigator> 
+   <ons-bottom-toolbar>
+        <div id="footer" style="text-align: center; line-height: 44px"></div>
+      </ons-bottom-toolbar>
+</body>
+</html>
