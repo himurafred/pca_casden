@@ -16,6 +16,7 @@
         "cordova-plugin-splashscreen@4.0.3",
         "cordova-custom-config@2.0.3",
         "cordova-plugin-document-viewer",
-        "cordova-plugin-file-opener2"
+        "cordova-plugin-file-opener2",
+        "cordova-plugin-file@4.3.3"
     ]
 }

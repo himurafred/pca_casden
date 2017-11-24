@@ -4,14 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-  
-  
-  
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
   <script src="assets/jquery-3.2.1.min.js"></script>
   <script src="assets/login.js"></script>
   <script src="assets/annuaire.js"></script>
+  <script src="assets/pdf.js"></script>
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
@@ -83,7 +81,7 @@
                         document.location.href="http://www.google.fr/pca";
                 }
                  page.querySelector('#push-kit').onclick = function() {
-                        document.querySelector('#navigator').pushPage('page-kit.html');
+                      document.querySelector('#navigator').pushPage('page-kit.html');
                 }
        
       } else if (page.matches('#page-numeros')) {
@@ -105,7 +103,7 @@
 <body>
   <ons-navigator id="navigator" page="welcome.html"></ons-navigator> 
    <ons-bottom-toolbar>
-        <div id="footer" style="text-align: center; line-height: 44px"></div>
+        <img id="footer_img" src="img/footer_casden.png" alt="" width="100px" height="30px"/><div id="footer" style="text-align: center; line-height: 44px"></div>
       </ons-bottom-toolbar>
 </body>
 </html>

@@ -10,7 +10,7 @@
   
   function createAnnuaire(person, idList, index, idAnnuaire){
                     var onsList = $(idList);
-                    var item ="<ons-list-item>";
+                    var item ="<ons-list-item class=\"item-annuaire\">";
         			item +="<ons-list class=\"width100\">";
 							   item +="<ons-list-header class=\"list-header-row\"  id=\"header-"+ idAnnuaire + "-"+ index +"\">";	
 							   item +="<div class=\"left\">";
@@ -52,8 +52,8 @@
 								
 								//Fax 
 							   if ( person.fax ){
-								   item +="<a href=\"tel:" + person.fax + "\">";
-								   item +="<ons-list-item tappable>";
+								  // item +="<a href=\"tel:" + person.fax + "\">";
+								   item +="<ons-list-item>";
 								   item +="<div class=\"left\">";
 								   item +="<ons-icon icon=\"ion-android-print\" class=\"list-item__icon\"></ons-icon>";
 								   item +=" </div>";
@@ -61,7 +61,7 @@
 								   item +=" <span class=\"list-item__title\">" + person.fax + "</span>";
 								   item +=" </div>";
 								   item +="</ons-list-item>";
-								   item +=" </a>";
+								   //item +=" </a>";
 							   }
 							   
 							   //Email
