@@ -4,6 +4,10 @@
         <div class="center title">Casden</div>
       </ons-toolbar>
       <div class="content" style="text-align: center">
-               <ons-list id="listCA">  </ons-list>  
+      <p>
+      <ons-search-input id="searchCA" onKeyUp="autocomplete('searchCA', '#listCA', createAnnuaire, filterAnnuaire, annuaireCA );" placeholder="Nom ...">
+       </ons-search-input>
+       </p>
+      <ons-list id="listCA">  </ons-list>  
       </div>
  </ons-page>

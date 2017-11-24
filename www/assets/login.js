@@ -1,16 +1,8 @@
- function autocomplete(){
-          var value =  document.getElementById('searchLogin').value;
-          var find;
-          if ( value.length > 2 ){
-               var onsList = $("#listLogin");
-                find = annuaire.pupa.filter(function (el) {
-                    return el.nom.startsWith(value.toUpperCase());
-                });
-              
-                $("#listLogin ons-list-item").remove();
-                 $.each(find, function( index, person ) {
-                        var item ="<ons-list-item>";
-    						   item +="<ons-list class=\"width100\" cas=\"" + person.cas +  "\" id=\"login-" + person.cas + "\">";
+
+    function createLogin(person, idList){
+          var onsList = $(idList);
+          var item ="<ons-list-item>";
+            				   item +="<ons-list class=\"width100\" cas=\"" + person.cas +  "\" id=\"login-" + person.cas + "\">";
 							   item +="<ons-list-item class=\"list-header-row\" tappable>";	
 							   item +="<div class=\"left\">";
                                item +="<ons-icon icon=\"md-face\" class=\"list-item__icon\"></ons-icon>";                 
@@ -30,6 +22,30 @@
                                     $("#footer").text(user.prenom + " " +user.nom );
                                     dialogLogin.hide();
                               }); 
+    };
+      
+    function filterLogin(annuaire, value){
+         if ( value.length > 2 ){
+         return annuaire.pupa.filter(function (el) {
+                    return el.nom.startsWith(value.toUpperCase());
+                });
+         }
+    }
+      
+      
+    function autocomplete(idFieldSearch, idList, create, filter, annuaire, others){
+          var value =  document.getElementById(idFieldSearch).value;
+          var find;
+         
+             
+                find = filter (annuaire, value)
+              
+                $(idList + " ons-list-item").remove();
+                 $.each(find, function( index, person ) {
+                        create(person, idList, index, others);
                  });
-          }   
-      }    
+          
+    }  
+            
+      
+      

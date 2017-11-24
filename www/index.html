@@ -23,6 +23,7 @@
       var annuaireCA = null;
       var user = null;
       var dialogLogin = null;
+      var url_safe = "https://www.google.fr/test.php";
 
       function loadJson(file){
           $.getJSON("assets/pupa.json", function(data){         
@@ -67,7 +68,7 @@
                         message: 'Confirmez que vous êtes en sécurité ?',
                         callback: function(answer) {
                             if ( answer ){
-                                $.post( "https://www.google.fr/test.php", user )
+                                $.post(url_safe, user )
                                .fail(function() {
                                        ons.notification.toast({message: 'Enregistrement non effectué', timeout: 2000})
                                 })
@@ -93,9 +94,9 @@
                         document.querySelector('#navigator').pushPage('page-numeros-ca.html');
                 }
       } else if (page.matches('#page-numeros-cc')) {
-               displayAnnuaire(annuaireCC, 'CC');
+               //displayAnnuaire(annuaireCC, 'CC');
       } else if (page.matches('#page-numeros-ca')) {
-               displayAnnuaire(annuaireCA, 'CA');
+               //displayAnnuaire(annuaireCA, 'CA');
       }
     });
   </script>

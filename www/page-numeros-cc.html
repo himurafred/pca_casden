@@ -4,6 +4,10 @@
         <div class="center title">Cellule de crise</div>
       </ons-toolbar>
       <div class="content" style="text-align: center">
-               <ons-list id="listCC">  </ons-list>  
+        <p>
+      <ons-search-input id="searchCC" onKeyUp="autocomplete('searchCC', '#listCC', createAnnuaire, filterAnnuaire, annuaireCC );" placeholder="Nom ...">
+      </ons-search-input>
+      </p>
+       <ons-list id="listCC">  </ons-list>  
       </div>
  </ons-page>

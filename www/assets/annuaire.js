@@ -1,9 +1,17 @@
-  function displayAnnuaire(annuaire, idAnnuaire){
-              var onsList = $("#list" + idAnnuaire );
-               var allItem = '';
-               $.each(annuaire, function( index, person ) {
-                        var item ="<ons-list-item>";
-    						   item +="<ons-list class=\"width100\">";
+ function filterAnnuaire(annuaire, value){
+        if(value === '*'){
+            return annuaire;
+        }
+        return annuaire.filter(function (el) {
+                    return el.nom.startsWith(value.toUpperCase());
+                });
+  }
+      
+  
+  function createAnnuaire(person, idList, index, idAnnuaire){
+                    var onsList = $(idList);
+                    var item ="<ons-list-item>";
+        			item +="<ons-list class=\"width100\">";
 							   item +="<ons-list-header class=\"list-header-row\"  id=\"header-"+ idAnnuaire + "-"+ index +"\">";	
 							   item +="<div class=\"left\">";
                                item +="<ons-icon icon=\"md-face\" class=\"list-item__icon\"></ons-icon>";                 
@@ -73,14 +81,9 @@
                                item +="</div>";
 							   
 							   item +="</ons-list>";
-                               item +="</ons-list-item>";	
-                                
-                               allItem += item;                                     
-                });
-                onsList.append(allItem); 
-                $.each(annuaire, function( index, person ) {
-                             $( "#header-" + idAnnuaire + "-"+ index ).click(function(){                     
+                               item +="</ons-list-item>";
+                               onsList.append(item); 
+                               $( "#header-" + idAnnuaire + "-"+ index ).click(function(){                     
                                       $( "#data-" + idAnnuaire + "-"+ index).toggle();
                               }); 
-                });
-      }
+  }

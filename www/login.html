@@ -1,7 +1,7 @@
 <ons-dialog>
 
   <p style="text-align: center; margin-top: 10px;">
-    <ons-search-input id="searchLogin" onKeyUp="autocomplete()" placeholder="Nom ...">
+    <ons-search-input id="searchLogin" onKeyUp="autocomplete('searchLogin', '#listLogin', createLogin, filterLogin, annuaire );" placeholder="Nom ...">
       </ons-search-input>
        <ons-list id="listLogin"> 
        </ons-list>  
